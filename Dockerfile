@@ -2,6 +2,8 @@ FROM lsiobase/ubuntu:focal
 MAINTAINER Conrad Kreyling "conrad@kreyling.biz"
 LABEL description="Stable compiler collection with distcc for internal use"
 
+ENV JOBS 8
+
 RUN \
   echo "** updating and installing packages **" && \
   apt update && \
@@ -20,5 +22,5 @@ RUN \
 
 EXPOSE 3632
 
-ENTRYPOINT distccd --daemon --verbose --no-detach --allow 0.0.0.0/0
+ENTRYPOINT distccd --daemon --verbose --no-detach -j $JOBS --allow 0.0.0.0/0
 
