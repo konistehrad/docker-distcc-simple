@@ -13,6 +13,7 @@ RUN \
      gcc-arm-linux-gnueabihf \
      clang \
      distcc distcc-pump && \
+  update-distcc-symlinks && \
   echo "**** clean up ****" && \
   apt-get autoclean && \
   rm -rf \
