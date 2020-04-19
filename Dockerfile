@@ -3,6 +3,7 @@ MAINTAINER Conrad Kreyling "conrad@kreyling.biz"
 LABEL description="Stable compiler collection with distcc for internal use"
 
 ENV JOBS 8
+ENV NICE 10
 
 RUN \
   echo "** updating and installing packages **" && \
@@ -23,5 +24,5 @@ RUN \
 
 EXPOSE 3632
 
-ENTRYPOINT distccd --daemon --verbose --no-detach -j $JOBS --allow 0.0.0.0/0
+ENTRYPOINT distccd --daemon --verbose --no-detach -N $NICE -j $JOBS --allow 0.0.0.0/0
 
