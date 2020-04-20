@@ -1,4 +1,4 @@
-FROM lsiobase/ubuntu:focal
+FROM lsiobase/ubuntu:bionic
 MAINTAINER Conrad Kreyling "conrad@kreyling.biz"
 LABEL description="Stable compiler collection with distcc for internal use"
 
@@ -14,7 +14,7 @@ RUN \
      gcc-aarch64-linux-gnu \
      gcc-arm-linux-gnueabihf \
      clang \
-     distcc distcc-pump && \
+     distcc && \
   update-distcc-symlinks && \
   echo "**** clean up ****" && \
   apt-get autoclean && \
