@@ -5,7 +5,7 @@ LABEL description="Stable compiler collection with distcc for internal use"
 ENV JOBS 8
 ENV NICE 10
 ENV USER nobody
-ENV LOG_LEVEL info
+ENV LOG_LEVEL debug
 
 RUN \
   echo "** updating and installing packages **" && \
@@ -26,5 +26,5 @@ RUN \
 
 EXPOSE 3632
 
-ENTRYPOINT distccd --daemon --verbose --no-detach --log-level $LOG_LEVEL --user $USER -N $NICE -j $JOBS --allow 0.0.0.0/0
+ENTRYPOINT distccd --daemon --no-detach --log-stderr --log-level=$LOG_LEVEL --user $USER -N $NICE -j $JOBS --allow 0.0.0.0/0 --listen 0.0.0.0
 
